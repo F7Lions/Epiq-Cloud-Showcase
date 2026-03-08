@@ -46,3 +46,5 @@ PowerShell
 
 
 Author : Muhamed Imraan (Roger)
+© 2026 Muhamed Imraan. All Rights Reserved.
+
