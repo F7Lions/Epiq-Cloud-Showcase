@@ -1,0 +1,13 @@
+name: 'Infrastructure Validation'
+on: [push]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: 'Azure Bicep Linter'
+      run: |
+        az bicep build --file ./Project-1-Landing-Zone/infra/main.bicep
+        az bicep build --file ./Project-2-Sentinel/infra/monitoring.bicep
+        az bicep build --file ./Project-3-FinOps/infra/policy.bicep
