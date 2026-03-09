@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Integrity Check') {
+            steps {
+                echo 'Calculating SHA-256 for Legal Bundle...'
+                sh 'python ./scripts/verify_integrity.py ./scripts/Transcript_001.txt'
+            }
+        }
+        stage('Deploy Immutable Vault') {
+            steps {
+                echo 'Provisioning WORM Storage...'
+                sh 'az deployment group create --resource-group rg-epiq-test --template-file ./infra/storage.bicep'
+            }
+        }
+        stage('Upload & Lock') {
+            steps {
+                echo 'Uploading verified transcript to Immutable Container...'
+                // Jenkins would use a Service Connection here
+            }
+        }
+    }
+}

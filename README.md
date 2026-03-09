@@ -1,4 +1,4 @@
-# Project 1: The IM8-Hardened "Digital Vault" 🛡️
+# 🛡️ Project 1: The IM8-Hardened "Digital Vault" (Landing Zone)
 
 ## 📖 Executive Summary
 In legal discovery, the integrity of **Electronically Stored Information (ESI)** is paramount. This project deploys a secure landing zone that eliminates public internet exposure, ensuring a forensic "Chain of Custody" for sensitive government and legal data.
@@ -6,7 +6,7 @@ In legal discovery, the integrity of **Electronically Stored Information (ESI)**
 ## 🏗️ Technical Architecture
 This overview illustrates the "Zero-Trust" bridge between the application layer and the hardened storage vault.
 
-![Architecture Diagram](./images/architecture.png)
+![Architecture Diagram](./images/overview%20diagram.png)
 
 ## 📸 Deployment & Compliance Evidence
 
@@ -27,23 +27,27 @@ The primary security control ensures that the ESI Storage Account is invisible t
 *Figure 2: Azure Portal verification of restricted network access for the Storage Account.*
 
 ### 3. Resource Inventory Audit
-A CLI-based audit confirms all five critical components (VNet, NSG, KV, Storage, PE) are active in the Singapore region.
+A CLI-based audit confirms all critical components (VNet, NSG, Key Vault, Storage, Private Endpoint) are active in the Singapore region.
 
 **Command**: `az resource list --resource-group rg-epiq-test --output table`
 
 ![Inventory Audit](./images/image2.png)
 *Figure 3: Audited list of physical cloud resources and their deployment status.*
 
-🛠️ How to Deploy
-Clone this repository.
+---
 
-Navigate to ./Project-1-Landing-Zone.
+## 🛠️ How to Deploy
+1. Clone this repository.
+2. Navigate to `./Project-1-Landing-Zone`.
+3. Run the deployment script:
+   ```powershell
+   .\scripts\deploy.ps1
 
-Run the deployment script:
+##   Decomissioning
 
-PowerShell
-.\scripts\deploy.ps1
+PS command : .\scripts\Cleanup.ps1
 
+END 
 
 Author : Muhamed Imraan (Roger)
 © 2026 Muhamed Imraan. All Rights Reserved.
